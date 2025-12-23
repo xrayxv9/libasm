@@ -86,6 +86,7 @@ ft_atoi_base:
 parsing_base:
 	push	rbp
 	mov		rbp, rsp
+	push	rbx
 
 	cmp		byte [rdi], 0
 	je		.error
@@ -93,16 +94,16 @@ parsing_base:
 	je		.error
 
 .first_loop:
-	mov		rcx, 0
-	movzx	rax, byte [rdi]
-	test	al, al
+	xor		rcx, rcx
+	movzx	rbx, byte [rdi]
+	test	bl, bl 
 	jz		.end_parsing
 	call	ft_iswhitspace
 	cmp		rax, -1
 	je		.error
-	cmp		al, '+'
+	cmp		bl, '+'
 	je		.error
-	cmp		al, '-'
+	cmp		bl, '-'
 	je		.error
 	inc		rdi
 
@@ -110,7 +111,7 @@ parsing_base:
 	movzx	rdx, byte [rdi + rcx]
 	test	dl, dl
 	jz		.first_loop
-	cmp		dl, al
+	cmp		dl, bl
 	je		.error
 	inc		rcx
 	jmp		.second_loop
@@ -120,6 +121,7 @@ parsing_base:
 .end_parsing:
 	mov		rax, 0
 .ret:
+	pop		rbx
 	pop		rbp
 	ret
 

@@ -156,8 +156,8 @@
 // 	}
 // }
 
-int main(void)
-{
+// int main(void)
+// {
 	// first bonus
 	// printf("number :  %lu\n", ft_atoi_base("1000", "01"));
 	// printf("number :  %lu\n", ft_atoi_base("100a", "01"));
@@ -170,37 +170,37 @@ int main(void)
 	// printf("number :  %lu\n", ft_atoi_base("11", "0123456789ABCDEF"));
 
 	// second bonus
-	t_list *lst = ft_lst_create(ft_strdup("coucou"));
-	t_list *tmp = lst;
-	t_list *to_free;
-	char buff[100];
-
-	for (int i = 0; i< 10; i++)
-	{
-		if (i <= 5)
-			sprintf(buff, "coucou%d", 1);
-		else
-			sprintf(buff, "coucou%d", 2);
-		ft_list_push_front(&lst, ft_strdup(buff));
-	}
-	printf("size : %d\n", ft_list_size(lst));
-
-	ft_list_sort(&lst, ft_strcmp);
-	ft_list_remove_if(&lst, "coucou2", ft_strcmp, free);
-	tmp = lst;
-
-	while (tmp)
-	{
-		printf("lst : %s\n", (char *)tmp->data);
-		to_free = tmp;
-		tmp = tmp->next;
-		free(to_free->data);
-		free(to_free);
-	}
-}
-
-// int main()
-// {
-// 	char *str = ft_strdup("coucou");
-// 	free(str);
+	// t_list *lst = ft_lst_create(ft_strdup("coucou"));
+	// t_list *tmp = lst;
+	// t_list *to_free;
+	// char buff[100];
+	//
+	// for (int i = 0; i< 10; i++)
+	// {
+	// 	if (i <= 5)
+	// 		sprintf(buff, "coucou%d", 1);
+	// 	else
+	// 		sprintf(buff, "coucou%d", 2);
+	// 	ft_list_push_front(&lst, ft_strdup(buff));
+	// }
+	// printf("size : %d\n", ft_list_size(lst));
+	//
+	// ft_list_sort(&lst, ft_strcmp);
+	// ft_list_remove_if(&lst, "coucou2", ft_strcmp, free);
+	// tmp = lst;
+	//
+	// while (tmp)
+	// {
+	// 	printf("lst : %s\n", (char *)tmp->data);
+	// 	to_free = tmp;
+	// 	tmp = tmp->next;
+	// 	free(to_free->data);
+	// 	free(to_free);
+	// }
 // }
+
+int main()
+{
+	char *str = ft_strdup("coucou");
+	free(str);
+}

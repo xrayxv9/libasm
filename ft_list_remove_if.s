@@ -60,8 +60,9 @@ ft_list_remove_if:
 	mov r9, [r8]
 	mov qword [rbx], r9
 	mov rdi, [r8 + 8]
+	push r8
 	call r15
-	mov rdi, r8
+	pop rdi
 	call r15
 	jmp .suppress
 .remove_first:

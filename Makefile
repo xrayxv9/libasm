@@ -1,8 +1,13 @@
 NAME = libasm.a
 
 NASM = nasm
+CNAME = gcc
+EXEC_NAME = libasm
 
 FLAGS = -f elf64 -g
+CFLAGS = -g -Wall -Werror -Wextra
+
+SRC_MAIN = main.c
 
 SRC = ft_strlen.s \
 	  ft_strcpy.s \
@@ -23,27 +28,36 @@ OBJ_PATH = obj/
 
 OBJ_SRC = $(SRC:.s=.o)
 OBJ_BONUS = $(SRC_BONUS:.s=.o)
+OBJ_SRC_MAIN = $(SRC_MAIN:.c=.o)
 
 OBJS_SRC = $(addprefix $(OBJ_PATH), $(OBJ_SRC))
 OBJS_BONUS = $(addprefix $(OBJ_PATH), $(OBJ_BONUS))
+OBJS_SRC_MAIN = $(addprefix $(OBJ_PATH), $(OBJ_SRC_MAIN))
 
 all: $(NAME)
 
-$(NAME): $(OBJS_SRC)
+$(NAME): $(OBJS_SRC) $(OBJS_SRC_MAIN)
 	ar -rcs $(NAME) $(OBJS_SRC)	
+	gcc -o $(EXEC_NAME) $(OBJS_SRC_MAIN) $(NAME)
 
 $(OBJ_PATH)%.o:%.s
 	mkdir -p $(OBJ_PATH)
 	$(NASM) $(FLAGS) -o $@ $<
+
+$(OBJ_PATH)%.o:%.c
+	mkdir -p $(OBJ_PATH)
+	$(CNAME) $(CFLAGS) -c -o $@ $<
 
 clean: 
 	rm -fr $(OBJ_PATH)
 
 fclean: clean
 	rm -fr $(NAME)
+	rm -fr $(EXEC_NAME)
 
-bonus: $(OBJS_SRC) $(OBJS_BONUS)
+bonus: $(OBJS_SRC) $(OBJS_BONUS) $(OBJS_SRC_MAIN)
 	ar -rcs $(NAME) $(OBJS_SRC) $(OBJS_BONUS)
+	gcc -o libasm $(OBJS_SRC_MAIN) $(NAME)
 	
 re : fclean all
 

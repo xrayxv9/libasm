@@ -71,7 +71,7 @@ ft_list_remove_if:
 	mov rdi, [rbx + 8]
 	call r15
 	mov rdi, rbx
-	call free wrt ..plt
+	call r15
 	jmp .first_element
 .finish:
 	pop	rbx

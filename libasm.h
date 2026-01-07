@@ -29,7 +29,7 @@ ssize_t ft_read(int fd, void *buf, size_t count);
 char	*ft_strdup(char *str);
 
 // BONUS
-size_t	ft_atoi_base(char *number, char *base);
+int		ft_atoi_base(char *number, char *base);
 t_list	*ft_lst_create(void *data);
 void	ft_list_push_front(t_list **begin_list, void *data);
 int		ft_list_size(t_list *begin_list);

@@ -22,4 +22,4 @@ ft_read:
 	
 	mov		[rax], rdi
 	mov		rax, -1
-	jmp		rbp
+	jmp		.end

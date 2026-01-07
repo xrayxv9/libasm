@@ -11,7 +11,7 @@ ft_write:
 	test	rax, rax	; test bit par bit avec & et met a jour les flags
 	js		.exit		; jump si mon rax est negatif
 .end:
-	pop		rsp
+	pop		rbp
 	ret					; return la len si tout ce pass bien
 
 .exit:

@@ -4,6 +4,9 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <string.h>
 
 #define RED     "\033[31m"
 #define GREEN   "\033[32m"

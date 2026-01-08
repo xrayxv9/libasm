@@ -13,26 +13,38 @@ int main()
 		char str[] = "coucou";
 
 		printf("%lu\n", strlen(str));
+		printf("%lu\n", strlen(""));
+		printf("%lu\n", strlen(LONG_TEXT));
 	}
 	printf(BLUE"\n <<<<<<<<<< ft_strlen >>>>>>>>>>\n" RESET);
 	{
 		char str[] = "coucou";
 
 		printf("%lu\n", ft_strlen(str));
-	}
-
-	printf(BLUE"\n <<<<<<<<<< ft_strcpy >>>>>>>>>>\n" RESET);
-	{
-		char dest[] = "coucou";
-		char src[] = "nothing here";
-		printf("%s\n", ft_strcpy(dest, src));
+		printf("%lu\n", ft_strlen(""));
+		printf("%lu\n", ft_strlen(LONG_TEXT));
 	}
 
 	printf(BLUE"\n <<<<<<<<<< strcpy >>>>>>>>>>\n" RESET);
 	{
 		char dest[] = "coucou";
 		char src[] = "nothing here";
+		char *dest_mall = malloc(3000);
+
 		printf("%s\n", strcpy(dest, src));
+		printf("%s\n", strcpy(dest_mall, LONG_TEXT));
+		free(dest_mall);
+	}
+
+	printf(BLUE"\n <<<<<<<<<< ft_strcpy >>>>>>>>>>\n" RESET);
+	{
+		char dest[] = "coucou";
+		char src[] = "nothing here";
+		char *dest_mall = malloc(3000);
+
+		printf("%s\n", ft_strcpy(dest, src));
+		printf("%s\n", ft_strcpy(dest_mall, LONG_TEXT));
+		free(dest_mall);
 	}
 
 	printf(BLUE"\n <<<<<<<<<< strcmp >>>>>>>>>>\n" RESET);
@@ -47,7 +59,9 @@ int main()
 		
 		char dest3[] = "couc";
 		char src3[] = "couco";
-		printf("%d\n", strcmp(dest3, src3));
+		printf("%d\n", strcmp("", src3));
+		printf("%d\n", strcmp(dest3, ""));
+		printf("%d\n", strcmp("", ""));
 
 	}
 
@@ -64,6 +78,9 @@ int main()
 		char dest3[] = "couc";
 		char src3[] = "couco";
 		printf("%d\n", ft_strcmp(dest3, src3));
+		printf("%d\n", ft_strcmp("", src3));
+		printf("%d\n", ft_strcmp(dest3, ""));
+		printf("%d\n", ft_strcmp("", ""));
 
 	}
 
@@ -126,10 +143,10 @@ int main()
 		const int size = 30;
 		char *str = calloc(size, 1);
 
-		read(-1, str, size - 1);
+		ft_read(-1, str, size - 1);
 		perror("Fail :");
 		errno = 0;
-		read(fd, str, size - 1);
+		ft_read(fd, str, size - 1);
 		perror("Success :");
 		printf("%s", str);
 		free(str);
@@ -140,9 +157,12 @@ int main()
 		// char *str = NULL;
 		char *str = "coucou";
 		char *dup = strdup(str);
+		char *dup_long = strdup(LONG_TEXT);
 		
 		printf("%s\n", dup);
+		printf("%s\n", dup_long);
 		free(dup);
+		free(dup_long);
 	}
 
 	printf(BLUE"\n <<<<<<<<<< ft_strdup >>>>>>>>>>\n" RESET);
@@ -150,9 +170,12 @@ int main()
 		// char *str = NULL;
 		char *str = "coucou";
 		char *dup = ft_strdup(str);
+		char *dup_long = ft_strdup(str);
 		
 		printf("%s\n", dup);
+		printf("%s\n", dup_long);
 		free(dup);
+		free(dup_long);
 	}
 }
 
@@ -186,7 +209,7 @@ int main()
 // 	printf("size : %d\n", ft_list_size(lst));
 //
 // 	ft_list_sort(&lst, ft_strcmp);
-// 	ft_list_remove_if(&lst, "coucou2", ft_strcmp, free);
+// 	ft_list_remove_if(&lst, "coucou1", ft_strcmp, free);
 // 	tmp = lst;
 //
 // 	while (tmp)
